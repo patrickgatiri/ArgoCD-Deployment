@@ -8,8 +8,13 @@ var clicked = function(){
     var serverRequest = new XMLHttpRequest();
     serverRequest.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200) {
-            var serverResponse = JSON.parse(this.responseText);
-            console.log("The random number is " + serverResponse.number);
+		var serverResponse = JSON.parse(this.responseText);
+		var result_string = "The random number is " + serverResponse.number;
+
+		var result_paragraph = document.getElementById("result");
+		result_paragraph.innerHTML = result_string;
+
+		console.log(result_string);
         }
     };
     serverRequest.open('GET', "http://localhost:3000/random", true);
