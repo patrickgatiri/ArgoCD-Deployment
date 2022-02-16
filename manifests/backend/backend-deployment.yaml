@@ -18,4 +18,4 @@ apiVersion: apps/v1
           - name: backend-server
             image: patrick358/simple_node_application:server-side
             ports:
-              - containerPort: 88
+              - containerPort: 3000
