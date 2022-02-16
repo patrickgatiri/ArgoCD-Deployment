@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+ kind: Deployment
+ metadata:
+  name: nodejs-frontend
+  labels:
+    app: nodejs-frontend
+  spec:
+    replicas: 2
+    selector:
+      matchLabels:
+        app: nodejs-frontend
+    template:
+      metadata:
+        labels:
+          app: nodejs-frontend
+      spec:
+        containers:
+          - name: frontend-server
+            image: patrick358/simple_node_application:client-side
+            ports:
+              - containerPort: 1234
