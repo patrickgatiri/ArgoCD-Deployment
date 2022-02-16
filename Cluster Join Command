@@ -1,2 +1,0 @@
-kubeadm join 192.168.0.113:6443 --token rbsw7o.wjke97w7xv28xfna \
-        --discovery-token-ca-cert-hash sha256:d89a4fc50685db1c5e355d8596a03c671a470fdf30e5709064041dc8ea6b1c09
