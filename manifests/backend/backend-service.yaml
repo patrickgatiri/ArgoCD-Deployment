@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: nodejs-backend-service
   labels:
-    run: nodejs-backend-service
+    app: nodejs-backend-service
 spec:
   ports:
   - port: 3000
