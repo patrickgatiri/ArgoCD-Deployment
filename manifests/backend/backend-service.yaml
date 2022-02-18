@@ -10,4 +10,4 @@ spec:
     protocol: TCP
     targetPort: 3000
   selector:
-    app: nodejs-backend
+    app: nodejs-backend-app
