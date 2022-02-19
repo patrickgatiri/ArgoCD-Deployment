@@ -17,7 +17,10 @@ var clicked = function(){
 		console.log(result_string);
         }
     };
-    serverRequest.open('GET', "http://localhost:3000/random", true);
+
+    // Within the pod, the server listens on port 3000.
+    // However, the Nodeport routes requests on port 30000
+    serverRequest.open('GET', "http://localhost:30000/random", true);
     serverRequest.send();
 }
 
