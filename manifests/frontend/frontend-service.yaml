@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-frontend-service
+  labels:
+    app: nodejs-frontend-service
+spec:
+  type: ClusterIP
+  ports:
+  - port: 1234
+    protocol: TCP
+    targetPort: 1234
+  selector:
+    app: nodejs-frontend-app
