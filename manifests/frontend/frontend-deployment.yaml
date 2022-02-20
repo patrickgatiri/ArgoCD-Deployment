@@ -16,6 +16,9 @@ spec:
     spec:
       containers:
         - name: frontend-server
-          image: patrick358/simple_node_application:client-side
+          # For a baremetal deployment
+          # image: patrick358/simple_node_application:client-side
+          # For a minikube deployment
+          image: patrick358/simple_node_application:minikube-client-side
           ports:
             - containerPort: 1234
