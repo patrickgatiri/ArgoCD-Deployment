@@ -1,4 +1,3 @@
 resources:
   - frontend-deployment.yaml
   - frontend-service.yaml
-  - frontend-nodeport.yaml
