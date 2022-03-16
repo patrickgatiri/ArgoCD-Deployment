@@ -19,3 +19,5 @@ spec:
           image: patrick358/simple_node_application:server-side
           ports:
             - containerPort: 3000
+      nodeSelector:
+        service: backend
