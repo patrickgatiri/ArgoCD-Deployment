@@ -22,10 +22,7 @@ var clicked = function(){
     // However, the Nodeport routes requests on port 30000.
 
     //Implementation on baremetal server.
-    //serverRequest.open('GET', "http://nodeporturl:3000/random", true);
-
-    //Implementation on minikube K8S cluster using nodeport.
-    serverRequest.open('GET', "http://minikube:30000/random", true);
+    serverRequest.open('GET', "http://nodejs-backend-service.backend:3000/random", true);
 
     serverRequest.send();
 }
