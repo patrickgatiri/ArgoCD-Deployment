@@ -19,5 +19,5 @@ spec:
           image: patrick358/simple_node_application:frontend
           ports:
             - containerPort: 1234          
-      nodeSelector:
-        service: frontend
+      # nodeSelector:
+      #   service: frontend
