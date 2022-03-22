@@ -19,8 +19,6 @@ var clicked = function(){
     };
 
     // Within the pod, the server listens on port 3000.
-    // However, the Nodeport routes requests on port 30000.
-
     //Implementation on baremetal server.
     serverRequest.open('GET', "http://nodejs-backend-service.backend:3000/random", true);
 
