@@ -17,6 +17,7 @@ spec:
       containers:
         - name: backend-server
           image: patrick358/simple_node_application:backend
-            - containerPort: 3000
+          ports:
+            - containerPort: 1234
       nodeSelector:
         service: backend
