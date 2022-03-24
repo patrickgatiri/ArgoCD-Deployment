@@ -5,7 +5,6 @@ metadata:
   labels:
     app: nodejs-frontend-service
 spec:
-  type: LoadBalancer
   ports:
   - port: 1234
     protocol: TCP
