@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/patrickgatiri/NodeJS-Deployment.git
     targetRevision: HEAD
-    path: manifests/security/vault-helm
+    path: manifests/security/vault-helm-chart
     helm:
       valueFiles:
         - override-values.yaml
