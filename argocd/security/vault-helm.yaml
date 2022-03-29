@@ -11,7 +11,7 @@ spec:
     path: manifests/security/vault-helm
     helm:
       valueFiles:
-        - values.yaml
+        - override-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: security
