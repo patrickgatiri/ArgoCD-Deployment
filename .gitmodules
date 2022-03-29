@@ -1,3 +1,6 @@
 [submodule "manifests/security/manifests/security/vault-helm"]
 	path = manifests/security/manifests/security/vault-helm
 	url = https://github.com/hashicorp/vault-helm.git
+[submodule "manifests/security/vault-helm"]
+	path = manifests/security/vault-helm
+	url = https://github.com/hashicorp/vault-helm.git
