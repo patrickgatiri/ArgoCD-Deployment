@@ -1,0 +1,3 @@
+resources:
+  - nodejs-frontend-deployment.yaml
+  - nodejs-frontend-service.yaml

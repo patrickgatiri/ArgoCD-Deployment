@@ -1,0 +1,3 @@
+resources:
+  - nodejs-backend-deployment.yaml
+  - nodejs-backend-service.yaml
