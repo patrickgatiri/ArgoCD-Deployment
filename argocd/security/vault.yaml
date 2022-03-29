@@ -9,6 +9,9 @@ spec:
     repoURL: https://github.com/patrickgatiri/NodeJS-Deployment.git
     targetRevision: HEAD
     path: manifests/security/vault
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: security
