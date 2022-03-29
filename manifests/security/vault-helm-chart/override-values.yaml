@@ -58,9 +58,6 @@ server:
   auditStorage:
     enabled: true
 
-  dataStorage:
-    enabled: true
-
   standalone:
     enabled: false
 
