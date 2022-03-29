@@ -1,2 +1,2 @@
 resources:
-  - vault.yaml
+  - vault-helm.yaml
