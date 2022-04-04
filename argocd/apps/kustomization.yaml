@@ -1,4 +1,4 @@
 resources:
   - backend-apps.yaml
   - frontend-apps.yaml
-  - security-apps.yaml
+  # - security-apps.yaml
