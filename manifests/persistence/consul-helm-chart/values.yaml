@@ -1751,7 +1751,7 @@ connectInject:
   enabled: true
 
   # The number of deployment replicas.
-  replicas: 2
+  replicas: 1
 
   # Image for consul-k8s-control-plane that contains the injector.
   # @type: string
