@@ -275,7 +275,7 @@ statsd:
     tag: latest
     pullPolicy: IfNotPresent
   metrics:
-    enabled: true
+    enabled: false
     port: 9102
     serviceMonitor:
       enabled: false
