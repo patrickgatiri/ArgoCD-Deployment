@@ -1,2 +1,2 @@
 resources:
-  - vault-helm.yaml
+  - banzai-cloud-vault
