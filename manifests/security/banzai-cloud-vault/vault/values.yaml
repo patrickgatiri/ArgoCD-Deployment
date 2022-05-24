@@ -179,6 +179,11 @@ vault:
             bound_service_account_namespaces: default
             policies: allow_secrets
             ttl: 1h
+          - name: vault-consul-access
+            bound_service_account_names: banzai-vault-service-account
+            bound_service_account_namespaces: security
+            policies: allow_secrets
+            ttl: 1h
     secrets:
       - path: secret
         type: kv
