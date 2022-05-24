@@ -5,7 +5,7 @@ global:
   # If deploying to OpenShift
   openshift: false
 
-replicaCount: 1
+replicaCount: 3
 strategy:
   type: RollingUpdate
 image:
@@ -179,7 +179,7 @@ vault:
             bound_service_account_namespaces: default
             policies: allow_secrets
             ttl: 1h
-            
+
     secrets:
       - path: secret
         type: kv
