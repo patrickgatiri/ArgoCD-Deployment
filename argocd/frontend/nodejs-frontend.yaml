@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/patrickgatiri/NodeJS-Deployment.git
+    repoURL: https://github.com/patrickgatiri/ArgoCD-Deployment.git
     targetRevision: HEAD
     path: manifests/frontend/nodejs-frontend
   destination:
