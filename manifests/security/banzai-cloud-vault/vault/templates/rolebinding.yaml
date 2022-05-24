@@ -23,7 +23,7 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: {{ template "vault.fullname" . }}-secret-access
-  namespace: security
+  namespace: {{ .Release.Namespace }}
   labels:
     helm.sh/chart: {{ template "vault.chart" . }}
     app.kubernetes.io/name: {{ template "vault.name" . }}
@@ -36,5 +36,5 @@ roleRef:
 subjects:
 - kind: ServiceAccount
   name: {{ template "vault.serviceAccountName" . }}
-  namespace: security
+  namespace: {{ .Release.Namespace }}
 {{- end }}
