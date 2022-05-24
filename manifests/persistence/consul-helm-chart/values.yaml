@@ -1392,7 +1392,7 @@ ui:
   # configure `ui.service`.
   # @default: global.enabled
   # @type: boolean
-  enabled: "-"
+  enabled: true
 
   # Configure the service for the Consul UI.
   service:
