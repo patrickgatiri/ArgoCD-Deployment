@@ -1,0 +1,4 @@
+resources:
+  - vault-operator.yaml
+  - vault-secrets-webhook.yaml
+  - vault.yaml
