@@ -209,12 +209,11 @@ vault:
 
     # See https://www.vaultproject.io/docs/configuration/storage/ for storage backends
     storage:
-      {}
       # file:
       #   path: "/vault/file"
-      # consul:
-      #   address: ""
-      #   path: ""
+      consul:
+        address: "consul-helm-consul-server.persistence:8500"
+        path: "banzai-cloud-vault/"
       #
       # etcd:
       #   address: ""
