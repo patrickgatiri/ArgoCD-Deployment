@@ -187,7 +187,7 @@ vault:
         options:
           version: 2
         
-      - type: database
+      - type: kubernetes
         description: PostgreSQL Database Secret Engine
         configuration:
           config:
