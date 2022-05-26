@@ -186,6 +186,15 @@ vault:
         description: General secrets.
         options:
           version: 2
+        
+      - type: database
+        description: PostgreSQL Database Secret Engine
+        configuration:
+          config:
+            - name: postgresql-connection
+              plugin_name: postgresql-database-plugin
+              connection_url: postgresql://postgres:5432/?sslmode=disable
+              allowed_roles: [default]
 
   config:
     # A YAML representation of a final vault config.json file.
