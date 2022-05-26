@@ -346,3 +346,8 @@ priorityClassName: ""
 
 # Override cluster version
 kubeVersion: ""
+
+plugins:
+  - plugin_name: postgresql-database-plugin
+    allowed_roles: "default"
+    connection_url: "postgresql://username:password@postgres:5432/mydatabase?sslmode=disable"
