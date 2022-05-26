@@ -186,6 +186,7 @@ vault:
         description: General secrets.
         options:
           version: 2
+
   config:
     # A YAML representation of a final vault config.json file.
     # See https://www.vaultproject.io/docs/configuration/ for more information.
@@ -347,7 +348,7 @@ priorityClassName: ""
 # Override cluster version
 kubeVersion: ""
 
-plugins:
-  - plugin_name: postgresql-database-plugin
-    allowed_roles: "default"
-    connection_url: "postgresql://username:password@postgres:5432/mydatabase?sslmode=disable"
+# plugins:
+#   - plugin_name: postgresql-database-plugin
+#     allowed_roles: "default"
+#     connection_url: "postgresql://username:password@postgres:5432/mydatabase?sslmode=disable"
