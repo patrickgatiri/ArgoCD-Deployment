@@ -1403,7 +1403,7 @@ ui:
 
     # The service type to register.
     # @type: string
-    type: null
+    type: ClusterIP
 
     # Set the port value of the UI service.
     port:
