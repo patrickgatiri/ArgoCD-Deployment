@@ -187,14 +187,22 @@ vault:
         options:
           version: 2
         
-      - type: kubernetes
+      - type: database
         description: PostgreSQL Database Secret Engine
         configuration:
           config:
             - name: postgresql-connection
-              plugin_name: postgresql-database-plugin
-              connection_url: postgresql://postgres:5432/?sslmode=disable
-              allowed_roles: [default]
+              plugin_name: "postgresql-database-plugin"
+              connection_url: "postgresql://{{username}}:{{password}}@postgres-pg-db.pgo.svc.cluster-dev01.local:5432/?sslmode=disable"
+              allowed_roles: [vault-postgres]
+              username: vaultuser
+              password: vaultpassword
+          roles:
+            - name: vault-postgres
+              db_name: postgresql-connection
+              creation_statements: "CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}' NOSUPERUSER CREATEDB CREATEROLE INHERIT; GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" 
+              default_ttl: "1h"
+              max_ttl: "24h"
 
   config:
     # A YAML representation of a final vault config.json file.
