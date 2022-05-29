@@ -166,6 +166,12 @@ vault:
         rules: path "secret/*" {
           capabilities = ["create", "read", "update", "delete", "list"]
           }
+
+      - name: vault-postgres
+        rules: path "database/creds/vault-postgres" {
+          capabilities = ["read"]
+        }
+      
     auth:
       - type: kubernetes
         # Allows creating roles in Vault which can be used later on for the Kubernetes based
