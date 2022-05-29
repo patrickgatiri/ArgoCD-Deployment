@@ -171,6 +171,11 @@ vault:
         rules: path "database/creds/vault-postgres" {
           capabilities = ["read"]
         }
+
+      - name: vault-mongodb
+        rules: path "database/creds/vault-mongodb" {
+          capabilities = ["read"]
+        }
       
     auth:
       - type: kubernetes
