@@ -187,6 +187,7 @@ vault:
         options:
           version: 2
         
+      # Connection config to a PostgreSQL database instance
       - type: database
         description: PostgreSQL Database Secret Engine
         configuration:
@@ -201,6 +202,24 @@ vault:
             - name: vault-postgres
               db_name: postgresql-connection
               creation_statements: "CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}' NOSUPERUSER CREATEDB CREATEROLE INHERIT; GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" 
+              default_ttl: "1h"
+              max_ttl: "24h"
+      
+      # Connection config to a MongoDB database instance
+      - type: database
+        description: MongoDB Database Secret Engine
+        configuration:
+          config:
+            - name: mongodb-connection
+              plugin_name: "mongodb-database-plugin"
+              connection_url: "mongodb://{{username}}:{{password}}@mongodb-service.data-mongodb.svc.cluster-dev01.local:27017/?tls=false"
+              allowed_roles: [vault-mongodb]
+              username: vaultuser
+              password: vaultpassword
+          roles:
+            - name: vault-mongodb
+              db_name: mongodb-connection
+              creation_statements: "{ \"db\": \"admin\", \"roles\": [{ \"role\": \"readWrite\", \"db\": \"mymongodbdatabase\"}] }" 
               default_ttl: "1h"
               max_ttl: "24h"
 
@@ -364,8 +383,3 @@ priorityClassName: ""
 
 # Override cluster version
 kubeVersion: ""
-
-# plugins:
-#   - plugin_name: postgresql-database-plugin
-#     allowed_roles: "default"
-#     connection_url: "postgresql://username:password@postgres:5432/mydatabase?sslmode=disable"
