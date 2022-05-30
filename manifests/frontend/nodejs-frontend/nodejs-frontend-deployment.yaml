@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app: nodejs-frontend-app
+      annotations:
+        consul.hashicorp.com/connect-inject: true
     spec:
       containers:
         - name: frontend-server
