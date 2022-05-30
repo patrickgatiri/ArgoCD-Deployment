@@ -223,8 +223,8 @@ vault:
           config:
             - name: mongodb-connection
               plugin_name: "mongodb-database-plugin"
-              connection_url: "mongodb://{{username}}:{{password}}@mongodb-service.data-mongodb.svc.cluster-dev01.local:27017/?tls=false"
               allowed_roles: [vault-mongodb]
+              connection_url: 'mongodb+srv://{{"{{"}}username{{"}}"}}:{{"{{"}}password{{"}}"}}@mongodb-service.mongodb.svc.cluster-dev01.local/admin?tls=false'
               username: vaultuser
               password: vaultpassword
           roles:
