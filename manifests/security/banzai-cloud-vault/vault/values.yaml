@@ -212,11 +212,11 @@ vault:
         
       # Connection config to a PostgreSQL database instance
       - type: database
-        path: postgresql
+        path: database
         description: PostgreSQL Database Secret Engine
         configuration:
           config:
-            - name: postgresql-connection
+            - name: vault-postgres
               plugin_name: "postgresql-database-plugin"
               connection_url: "postgresql://{{username}}:{{password}}@postgres-pg-db.pgo.svc.cluster-dev01.local:5432/?sslmode=disable"
               allowed_roles: [vault-postgres]
@@ -224,18 +224,18 @@ vault:
               password: vaultpassword
           roles:
             - name: vault-postgres
-              db_name: postgresql-connection
+              db_name: vault-postgres
               creation_statements: "CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}' NOSUPERUSER CREATEDB CREATEROLE INHERIT; GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" 
               default_ttl: "1h"
               max_ttl: "24h"
       
       # Connection config to a MongoDB database instance
       - type: database
-        path: mongodb
+        path: database
         description: MongoDB Database Secret Engine
         configuration:
           config:
-            - name: mongodb-connection
+            - name: vault-mongodb
               plugin_name: "mongodb-database-plugin"
               allowed_roles: [vault-mongodb]
               connection_url: 'mongodb+srv://{{"{{"}}username{{"}}"}}:{{"{{"}}password{{"}}"}}@mongodb-service.mongodb.svc.cluster-dev01.local/admin?tls=false'
@@ -243,7 +243,7 @@ vault:
               password: vaultpassword
           roles:
             - name: vault-mongodb
-              db_name: mongodb-connection
+              db_name: vault-mongodb
               creation_statements: "{ \"db\": \"admin\", \"roles\": [{ \"role\": \"readWrite\", \"db\": \"mymongodbdatabase\"}] }" 
               default_ttl: "1h"
               max_ttl: "24h"
