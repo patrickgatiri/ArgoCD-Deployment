@@ -204,64 +204,47 @@ vault:
             ttl: 1h
 
     secrets:
+      - path: secret
+        type: kv
+        description: General secrets.
+        options:
+          version: 2
+        
+      # Connection config to a PostgreSQL database instance
       - type: database
-        description: MySQL Database secret engine.
+        description: PostgreSQL Database Secret Engine
         configuration:
           config:
-            - name: my-mysql
-              plugin_name: "mysql-database-plugin"
-              connection_url: "{{username}}:{{password}}@tcp(127.0.0.1:3306)/"
-              allowed_roles: [pipeline]
-              username: "${env `ROOT_USERNAME`}" # Example how to read environment variables
-              password: "${env `ROOT_PASSWORD`}"
+            - name: postgresql-connection
+              plugin_name: "postgresql-database-plugin"
+              connection_url: "postgresql://{{username}}:{{password}}@postgres-pg-db.pgo.svc.cluster-dev01.local:5432/?sslmode=disable"
+              allowed_roles: [vault-postgres]
+              username: vaultuser
+              password: vaultpassword
           roles:
-            - name: pipeline
-              db_name: my-mysql
-              creation_statements: "GRANT ALL ON *.* TO '{{name}}'@'%' IDENTIFIED BY '{{password}}';"
-              default_ttl: "10m"
+            - name: vault-postgres
+              db_name: postgresql-connection
+              creation_statements: "CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}' NOSUPERUSER CREATEDB CREATEROLE INHERIT; GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" 
+              default_ttl: "1h"
               max_ttl: "24h"
-    # secrets:
-    #   - path: secret
-    #     type: kv
-    #     description: General secrets.
-    #     options:
-    #       version: 2
-        
-    #   # Connection config to a PostgreSQL database instance
-    #   - type: database
-    #     description: PostgreSQL Database Secret Engine
-    #     configuration:
-    #       config:
-    #         - name: postgresql-connection
-    #           plugin_name: "postgresql-database-plugin"
-    #           connection_url: "postgresql://{{username}}:{{password}}@postgres-pg-db.pgo.svc.cluster-dev01.local:5432/?sslmode=disable"
-    #           allowed_roles: [vault-postgres]
-    #           username: vaultuser
-    #           password: vaultpassword
-    #       roles:
-    #         - name: vault-postgres
-    #           db_name: postgresql-connection
-    #           creation_statements: "CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}' NOSUPERUSER CREATEDB CREATEROLE INHERIT; GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" 
-    #           default_ttl: "1h"
-    #           max_ttl: "24h"
       
-    #   # Connection config to a MongoDB database instance
-    #   - type: database
-    #     description: MongoDB Database Secret Engine
-    #     configuration:
-    #       config:
-    #         - name: mongodb-connection
-    #           plugin_name: "mongodb-database-plugin"
-    #           allowed_roles: [vault-mongodb]
-    #           connection_url: 'mongodb+srv://{{"{{"}}username{{"}}"}}:{{"{{"}}password{{"}}"}}@mongodb-service.mongodb.svc.cluster-dev01.local/admin?tls=false'
-    #           username: vaultuser
-    #           password: vaultpassword
-    #       roles:
-    #         - name: vault-mongodb
-    #           db_name: mongodb-connection
-    #           creation_statements: "{ \"db\": \"admin\", \"roles\": [{ \"role\": \"readWrite\", \"db\": \"mymongodbdatabase\"}] }" 
-    #           default_ttl: "1h"
-    #           max_ttl: "24h"
+      # Connection config to a MongoDB database instance
+      - type: database
+        description: MongoDB Database Secret Engine
+        configuration:
+          config:
+            - name: mongodb-connection
+              plugin_name: "mongodb-database-plugin"
+              allowed_roles: [vault-mongodb]
+              connection_url: 'mongodb+srv://{{"{{"}}username{{"}}"}}:{{"{{"}}password{{"}}"}}@mongodb-service.mongodb.svc.cluster-dev01.local/admin?tls=false'
+              username: vaultuser
+              password: vaultpassword
+          roles:
+            - name: vault-mongodb
+              db_name: mongodb-connection
+              creation_statements: "{ \"db\": \"admin\", \"roles\": [{ \"role\": \"readWrite\", \"db\": \"mymongodbdatabase\"}] }" 
+              default_ttl: "1h"
+              max_ttl: "24h"
 
   config:
     # A YAML representation of a final vault config.json file.
