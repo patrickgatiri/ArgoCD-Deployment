@@ -14,7 +14,7 @@ spec:
       labels:
         app: nodejs-backend-app
       annotations:
-        consul.hashicorp.com/connect-inject: "true"
+        # consul.hashicorp.com/connect-inject: "true"
     spec:
       containers:
         - name: backend-server
