@@ -244,27 +244,7 @@ vault:
               creation_statements: "{ \"db\": \"admin\", \"roles\": [{ \"role\": \"readWrite\", \"db\": \"mymongodbdatabase\"}] }" 
               default_ttl: "1h"
               max_ttl: "24h"
-      
-      # Connection config to a MongoDB database instance
-      # - type: database
-      #   path: database
-      #   description: MongoDB Database Secret Engine
-      #   configuration:
-      #     config:
-      #       - name: vault-mongodb
-      #           plugin_name: "mongodb-database-plugin"
-      #           allowed_roles: [vault-mongodb]
-      #           connection_url: 'mongodb+srv://{{"{{"}}username{{"}}"}}:{{"{{"}}password{{"}}"}}@mongodb-service.mongodb.svc.cluster-dev01.local/admin?tls=false'
-      #           username: vaultuser
-      #           password: vaultpassword
-            
-      #     roles:
-      #       - name: vault-mongodb
-      #         db_name: vault-mongodb
-      #         creation_statements: "{ \"db\": \"admin\", \"roles\": [{ \"role\": \"readWrite\", \"db\": \"mymongodbdatabase\"}] }" 
-      #         default_ttl: "1h"
-      #         max_ttl: "24h"
-
+              
   config:
     # A YAML representation of a final vault config.json file.
     # See https://www.vaultproject.io/docs/configuration/ for more information.
