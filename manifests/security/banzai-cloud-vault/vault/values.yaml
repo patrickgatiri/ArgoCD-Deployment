@@ -191,6 +191,18 @@ vault:
             policies: allow_secrets
             ttl: 1h
 
+          - name: backend
+            bound_service_account_names: backend
+            bound_service_account_namespaces: backend
+            policies: ["vault-postgres", "vault-mongodb"]
+            ttl: 1h
+
+          - name: frontend
+            bound_service_account_names: frontend
+            bound_service_account_namespaces: frontend
+            policies: ["vault-postgres", "vault-mongodb"]
+            ttl: 1h
+
     secrets:
       - type: database
         description: MySQL Database secret engine.
