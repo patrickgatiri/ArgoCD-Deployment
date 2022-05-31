@@ -212,10 +212,10 @@ vault:
         
       - type: database
         path: database
-        description: PostgreSQL Database Secret Engine
+        description: Database Secret Engine
         configuration:
           config:
-          
+
             # Connection config to a PostgreSQL database instance
             - name: vault-postgres
               plugin_name: "postgresql-database-plugin"
