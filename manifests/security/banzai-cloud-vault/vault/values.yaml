@@ -212,6 +212,7 @@ vault:
         
       # Connection config to a PostgreSQL database instance
       - type: database
+        path: postgresql
         description: PostgreSQL Database Secret Engine
         configuration:
           config:
@@ -230,6 +231,7 @@ vault:
       
       # Connection config to a MongoDB database instance
       - type: database
+        path: mongodb
         description: MongoDB Database Secret Engine
         configuration:
           config:
