@@ -13,7 +13,7 @@ spec:
     metadata:
       labels:
         app: nodejs-backend-app
-      annotations:
+      # annotations: 
         # consul.hashicorp.com/connect-inject: "true"
     spec:
       containers:
