@@ -211,23 +211,23 @@ vault:
           version: 2
         
       # Connection config to a PostgreSQL database instance
-      - type: database
-        path: database
-        description: PostgreSQL Database Secret Engine
-        configuration:
-          config:
-            - name: vault-postgres
-              plugin_name: "postgresql-database-plugin"
-              connection_url: "postgresql://{{username}}:{{password}}@postgres-pg-db.pgo.svc.cluster-dev01.local:5432/?sslmode=disable"
-              allowed_roles: [vault-postgres]
-              username: vaultuser
-              password: vaultpassword
-          roles:
-            - name: vault-postgres
-              db_name: vault-postgres
-              creation_statements: "CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}' NOSUPERUSER CREATEDB CREATEROLE INHERIT; GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" 
-              default_ttl: "1h"
-              max_ttl: "24h"
+      # - type: database
+      #   path: database
+      #   description: PostgreSQL Database Secret Engine
+      #   configuration:
+      #     config:
+      #       - name: vault-postgres
+      #         plugin_name: "postgresql-database-plugin"
+      #         connection_url: "postgresql://{{username}}:{{password}}@postgres-pg-db.pgo.svc.cluster-dev01.local:5432/?sslmode=disable"
+      #         allowed_roles: [vault-postgres]
+      #         username: vaultuser
+      #         password: vaultpassword
+      #     roles:
+      #       - name: vault-postgres
+      #         db_name: vault-postgres
+      #         creation_statements: "CREATE ROLE \"{{name}}\" WITH LOGIN PASSWORD '{{password}}' VALID UNTIL '{{expiration}}' NOSUPERUSER CREATEDB CREATEROLE INHERIT; GRANT SELECT ON ALL TABLES IN SCHEMA public TO \"{{name}}\";" 
+      #         default_ttl: "1h"
+      #         max_ttl: "24h"
       
       # Connection config to a MongoDB database instance
       - type: database
