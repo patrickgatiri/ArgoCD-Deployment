@@ -11,6 +11,7 @@ spec:
     path: manifests/frontend/nodejs-frontend
   destination:
     server: https://kubernetes.default.svc
+    namespace: frontend
   syncPolicy:
     automated:
       prune: true
