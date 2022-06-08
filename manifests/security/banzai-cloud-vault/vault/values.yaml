@@ -172,15 +172,15 @@ vault:
           capabilities = ["create", "read", "update", "delete", "list"]
           }
 
-      - name: vault-postgres
-        rules: path "database/creds/vault-postgres" {
-          capabilities = ["read"]
-          }
+      # - name: vault-postgres
+      #   rules: path "database/creds/vault-postgres" {
+      #     capabilities = ["read"]
+      #     }
 
-      - name: vault-mongodb
-        rules: path "database/creds/vault-mongodb" {
-          capabilities = ["read"]
-          }
+      # - name: vault-mongodb
+      #   rules: path "database/creds/vault-mongodb" {
+      #     capabilities = ["read"]
+      #     }
       
     auth:
       - type: kubernetes
@@ -196,17 +196,17 @@ vault:
             policies: allow_secrets
             ttl: 1h
 
-          - name: backend
-            bound_service_account_names: backend
-            bound_service_account_namespaces: backend
-            policies: ["vault-postgres", "vault-mongodb"]
-            ttl: 1h
+          # - name: backend
+          #   bound_service_account_names: backend
+          #   bound_service_account_namespaces: backend
+          #   policies: ["vault-postgres", "vault-mongodb"]
+          #   ttl: 1h
 
-          - name: frontend
-            bound_service_account_names: frontend
-            bound_service_account_namespaces: frontend
-            policies: ["vault-postgres", "vault-mongodb"]
-            ttl: 1h
+          # - name: frontend
+          #   bound_service_account_names: frontend
+          #   bound_service_account_namespaces: frontend
+          #   policies: ["vault-postgres", "vault-mongodb"]
+          #   ttl: 1h
 
           - name: openvpn-server
             bound_service_account_names: openvpn-server
@@ -230,7 +230,7 @@ vault:
       #       # Connection config to a PostgreSQL database instance
       #       - name: vault-postgres
       #         plugin_name: "postgresql-database-plugin"
-      #         connection_url: "postgresql://{{username}}:{{password}}@postgres-pg-db.pgo.svc.cluster-dev01.local:5432/?sslmode=disable"
+      #         connection_url: "postgresql://{{username}}:{{password}}@postgres:5432/?sslmode=disable"
       #         allowed_roles: [vault-postgres]
       #         username: vaultuser
       #         password: vaultpassword
@@ -239,7 +239,7 @@ vault:
       #       - name: vault-mongodb
       #         plugin_name: "mongodb-database-plugin"
       #         allowed_roles: [vault-mongodb]
-      #         connection_url: 'mongodb+srv://{{"{{"}}username{{"}}"}}:{{"{{"}}password{{"}}"}}@mongodb-service.mongodb.svc.cluster-dev01.local/admin?tls=false'
+      #         connection_url: 'mongodb+srv://{{"{{"}}username{{"}}"}}:{{"{{"}}password{{"}}"}}@mongodb/admin?tls=false'
       #         username: vaultuser
       #         password: vaultpassword
               
