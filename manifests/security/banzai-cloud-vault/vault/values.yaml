@@ -208,6 +208,12 @@ vault:
             policies: ["vault-postgres", "vault-mongodb"]
             ttl: 1h
 
+          - name: openvpn-server
+            bound_service_account_names: openvpn-server
+            bound_service_account_namespaces: networking
+            policies: ["allow_pki"]
+            ttl: 1h
+
     secrets:
       - path: secret
         type: kv
