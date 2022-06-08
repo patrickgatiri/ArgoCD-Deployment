@@ -167,6 +167,11 @@ vault:
           capabilities = ["create", "read", "update", "delete", "list"]
           }
 
+      - name: allow_pki
+        rules: path "pki/*" {
+          capabilities = ["create", "read", "update", "delete", "list"]
+          }
+
       - name: vault-postgres
         rules: path "database/creds/vault-postgres" {
           capabilities = ["read"]
