@@ -10,18 +10,19 @@ ovpn:
     tag: ${CIRCLE_TAG}
 
 vault:
-  address: https://localhost:8200
-  caCrt: ~
+  address: http://vault.security.svc.kubernetes
+  # Vault is configured not to use TLS
+  # caCrt: ~
   pkiPath: meerkat
   auth:
     type: kubernetes
     mountPath: auth/kubernetes
     config:
-      role: meerkat
+      role: openvpn-server
   agent:
     image: 
       name: vault
-      tag: 1.6.0
+      tag: 1.6.2
 
 rbac:
   serviceAccountName: ~
