@@ -1,13 +1,13 @@
 operator:
   image:
     name: ghcr.io/borchero/meerkat/operator
-    tag: ${CIRCLE_TAG}
+    # tag: ${CIRCLE_TAG}
   debug: false
 
 ovpn:
   image:
     name: ghcr.io/borchero/meerkat/server
-    tag: ${CIRCLE_TAG}
+    # tag: ${CIRCLE_TAG}
 
 vault:
   address: http://vault.security.svc.kubernetes
