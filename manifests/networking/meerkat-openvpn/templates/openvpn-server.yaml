@@ -1,7 +1,0 @@
-apiVersion: meerkat.borchero.com/v1alpha1
-kind: OvpnServer
-metadata:
-  name: openvpn-server
-spec:
-  network:
-    host: patrick358
