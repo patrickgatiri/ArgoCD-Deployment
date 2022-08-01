@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nodejs-backend
+  namespace: "{{- .Values.argoNamespace}}"
+spec:
+  project: "{{- .Values.project }}"
+  source:
+    repoURL: "{{- .Values.source.repoURL }}"
+    targetRevision: "{{- .Values.source.targetRevision }}"
+    path: "{{- .Values.baseManifestPath }}/nodejs-backend"
+  destination:
+    server: "{{- .Values.targetCluster }}"
+    namespace: "{{- .Values.namespace }}"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
