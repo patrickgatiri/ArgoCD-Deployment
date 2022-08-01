@@ -4,17 +4,17 @@ metadata:
   name: vault-operator
   namespace: argocd
 spec:
-  project: default
+  project: {{- .Values.project }}
   source:
-    repoURL: https://github.com/patrickgatiri/ArgoCD-Deployment.git
-    targetRevision: HEAD
+    repoURL: {{- .Values.source.repoURL }}
+    targetRevision: {{- .Values.source.targetRevision }}
     path: manifests/security/banzai-cloud-vault/vault-operator
     helm:
       valueFiles:
         - values.yaml
   destination:
-    server: https://kubernetes.default.svc
-    namespace: security
+    server: {{- .Values.targetCluster }}
+    namespace: {{- .Values.namespace }}
   syncPolicy:
     automated:
       prune: true

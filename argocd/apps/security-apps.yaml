@@ -11,6 +11,9 @@ spec:
     repoURL: https://github.com/patrickgatiri/ArgoCD-Deployment.git
     targetRevision: HEAD
     path: argocd/security
+    helm:
+      valueFiles:
+        - ../../values.global.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: security
