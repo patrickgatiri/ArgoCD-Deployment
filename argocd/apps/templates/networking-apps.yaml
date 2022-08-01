@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: networking-apps
+  namespace: "{{- .Values.argoNamespace}}"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io  
+spec:
+  project: "{{- .Values.project }}"
+  source:
+    repoURL: "{{- .Values.source.repoURL }}"
+    targetRevision: "{{- .Values.source.targetRevision }}"
+    path: argocd/networking
+    helm:
+      valueFiles:
+        - ../values.global.yaml
+        - values.yaml
+  destination:
+    server: "{{- .Values.targetCluster }}"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false

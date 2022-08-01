@@ -1,26 +1,25 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: security-apps
-  namespace: argocd
+  name: frontend-apps
+  namespace: "{{- .Values.argoNamespace}}"
   finalizers:
   - resources-finalizer.argocd.argoproj.io  
 spec:
-  project: default
+  project: "{{- .Values.project }}"
   source:
-    repoURL: https://github.com/patrickgatiri/ArgoCD-Deployment.git
-    targetRevision: HEAD
-    path: argocd/security
+    repoURL: "{{- .Values.source.repoURL }}"
+    targetRevision: "{{- .Values.source.targetRevision }}"
+    path: argocd/frontend
     helm:
       valueFiles:
         - ../values.global.yaml
         - values.yaml
   destination:
-    server: https://kubernetes.default.svc
-    namespace: security
+    server: "{{- .Values.targetCluster }}"
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+      - CreateNamespace=false

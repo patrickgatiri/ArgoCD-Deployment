@@ -1,6 +1,0 @@
-resources:
-  - backend-apps.yaml
-  - frontend-apps.yaml
-  # - networking-apps.yaml
-  - persistence-apps.yaml
-  - security-apps.yaml

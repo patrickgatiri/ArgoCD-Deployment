@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: persistence-apps
+  namespace: "{{- .Values.argoNamespace}}"
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io  
+spec:
+  project: "{{- .Values.project }}"
+  source:
+    repoURL: "{{- .Values.source.repoURL }}"
+    targetRevision: "{{- .Values.source.targetRevision }}"
+    path: argocd/persistence
+    helm:
+      valueFiles:
+        - ../values.global.yaml
+        - values.yaml
+  destination:
+    server: "{{- .Values.targetCluster }}"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
