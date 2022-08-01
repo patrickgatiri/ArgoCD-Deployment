@@ -4,17 +4,17 @@ metadata:
   name: vault-operator
   namespace: argocd
 spec:
-  project: {{- .Values.project }}
+  project: "{{- .Values.project }}"
   source:
-    repoURL: {{- .Values.source.repoURL }}
-    targetRevision: {{- .Values.source.targetRevision }}
+    repoURL: "{{- .Values.source.repoURL }}"
+    targetRevision: "{{- .Values.source.targetRevision }}"
     path: manifests/security/banzai-cloud-vault/vault-operator
     helm:
       valueFiles:
         - values.yaml
   destination:
-    server: {{- .Values.targetCluster }}
-    namespace: {{- .Values.namespace }}
+    server: "{{- .Values.targetCluster }}"
+    namespace: "{{- .Values.namespace }}"
   syncPolicy:
     automated:
       prune: true
