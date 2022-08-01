@@ -1,3 +1,5 @@
+argoNamespace: argocd
+
 project: default
 
 targetCluster: https://kubernetes.default.svc
