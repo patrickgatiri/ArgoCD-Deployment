@@ -7,3 +7,6 @@ targetCluster: https://kubernetes.default.svc
 source:
   repoURL: https://github.com/patrickgatiri/ArgoCD-Deployment.git
   targetRevision: HEAD
+
+selfHeal: false
+prune: false
