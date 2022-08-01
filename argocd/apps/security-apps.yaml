@@ -13,7 +13,8 @@ spec:
     path: argocd/security
     helm:
       valueFiles:
-        - ../../values.global.yaml
+        - ../values.global.yaml
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: security
