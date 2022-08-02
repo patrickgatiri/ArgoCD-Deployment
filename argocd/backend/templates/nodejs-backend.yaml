@@ -1,14 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nodejs-backend
+  name: backend
   namespace: "{{- .Values.argoNamespace}}"
 spec:
   project: "{{- .Values.project }}"
   source:
     repoURL: "{{- .Values.source.repoURL }}"
     targetRevision: "{{- .Values.source.targetRevision }}"
-    path: "{{- .Values.baseManifestPath }}/nodejs-backend"
+    path: "{{- .Values.baseManifestPath }}"
+    helm:
+      valueFiles:
+        - values.yaml
   destination:
     server: "{{- .Values.targetCluster }}"
     namespace: "{{- .Values.namespace }}"
