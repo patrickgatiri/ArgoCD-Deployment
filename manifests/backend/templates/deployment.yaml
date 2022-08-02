@@ -36,6 +36,7 @@ spec:
           ports:
           - containerPort: 3000
             protocol: TCP
+            name: http
           livenessProbe:
             httpGet:
               path: /
