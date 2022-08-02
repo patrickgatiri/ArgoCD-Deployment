@@ -19,7 +19,7 @@ spec:
     server: "{{- .Values.targetCluster }}"
   syncPolicy:
     automated:
-      prune: "{{- .Values.prune}}"
-      selfHeal: "{{- .Values.selfHeal}}"
+      prune: {{ .Values.prune }}
+      selfHeal: {{ .Values.selfHeal }}
     syncOptions:
       - CreateNamespace=false
