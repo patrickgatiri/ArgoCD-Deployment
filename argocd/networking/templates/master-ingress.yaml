@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: "{{- .Values.source.repoURL }}"
     targetRevision: "{{- .Values.source.targetRevision }}"
-    path: "{{- .Values.baseManifestPath }}/master-ingress.yaml"
+    path: "{{- .Values.baseManifestPath }}/master-ingress"
   destination:
     server: "{{- .Values.targetCluster }}"
     namespace: "{{- .Values.namespace }}"
