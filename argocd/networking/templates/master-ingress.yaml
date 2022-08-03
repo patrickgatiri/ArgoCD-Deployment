@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: master-ingress
+  namespace: "{{- .Values.argoNamespace}}"
+spec:
+  project: "{{- .Values.project }}"
+  source:
+    repoURL: "{{- .Values.source.repoURL }}"
+    targetRevision: "{{- .Values.source.targetRevision }}"
+    path: "{{- .Values.baseManifestPath }}/master-ingress.yaml"
+  destination:
+    server: "{{- .Values.targetCluster }}"
+    namespace: "{{- .Values.namespace }}"
+  syncPolicy:
+    automated:
+      prune: {{ .Values.prune }}
+      selfHeal: {{ .Values.selfHeal }}
+    syncOptions:
+      - CreateNamespace=false
