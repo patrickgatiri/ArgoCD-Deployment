@@ -45,7 +45,7 @@ ingress:
   className: "nginx"
   annotations:
     nginx.org/mergeable-ingress-type: "minion"
-    # kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
     - host: patrick358.local
