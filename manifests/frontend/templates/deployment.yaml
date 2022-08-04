@@ -39,7 +39,7 @@ spec:
           - name: BACKEND_HOST
             value: {{ .Values.environment.backendHost }}
           - name: BACKEND_PORT
-            value: {{ .Values.environment.backendPort }}
+            value: {{ .Values.environment.backendPort | quote }}
           ports:
           - containerPort: 1234
             protocol: TCP
