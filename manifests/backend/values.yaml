@@ -48,7 +48,8 @@ ingress:
     kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - paths:
+    - host: patrick358.local
+      paths:
         - path: /backend
           pathType: Prefix
           backend:
