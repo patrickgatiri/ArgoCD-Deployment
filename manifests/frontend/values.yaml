@@ -10,6 +10,11 @@ image:
   # Overrides the image tag whose default is the chart appVersion.
   tag: "frontend"
 
+environment:
+  backendProtocol: "http"
+  backendHost: "patrick358.local"
+  backendPort: 3000
+
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
