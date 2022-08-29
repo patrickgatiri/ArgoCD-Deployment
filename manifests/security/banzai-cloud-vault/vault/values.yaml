@@ -5,7 +5,7 @@ global:
   # If deploying to OpenShift
   openshift: false
 
-replicaCount: 3
+replicaCount: 1
 strategy:
   type: RollingUpdate
 image:
@@ -167,10 +167,10 @@ vault:
           capabilities = ["create", "read", "update", "delete", "list"]
           }
 
-      - name: allow_pki
-        rules: path "pki/*" {
-          capabilities = ["create", "read", "update", "delete", "list"]
-          }
+      # - name: allow_pki
+      #   rules: path "pki/*" {
+      #     capabilities = ["create", "read", "update", "delete", "list"]
+      #     }
 
       # - name: vault-postgres
       #   rules: path "database/creds/vault-postgres" {
@@ -195,7 +195,7 @@ vault:
             bound_service_account_namespaces: default
             policies: allow_secrets
             ttl: 1h
-
+          
           # - name: backend
           #   bound_service_account_names: backend
           #   bound_service_account_namespaces: backend
@@ -207,13 +207,6 @@ vault:
           #   bound_service_account_namespaces: frontend
           #   policies: ["vault-postgres", "vault-mongodb"]
           #   ttl: 1h
-
-          - name: openvpn-server
-            bound_service_account_names: openvpn-server
-            bound_service_account_namespaces: networking
-            policies: ["allow_pki"]
-            ttl: 1h
-
     secrets:
       - path: secret
         type: kv
@@ -255,7 +248,7 @@ vault:
       #         creation_statements: "{ \"db\": \"admin\", \"roles\": [{ \"role\": \"readWrite\", \"db\": \"mymongodbdatabase\"}] }" 
       #         default_ttl: "1h"
       #         max_ttl: "24h"
-              
+
   config:
     # A YAML representation of a final vault config.json file.
     # See https://www.vaultproject.io/docs/configuration/ for more information.
@@ -279,12 +272,12 @@ vault:
     # disable_mlock: true
 
     # See https://www.vaultproject.io/docs/configuration/storage/ for storage backends
-    storage:
+    storage: {}
       # file:
       #   path: "/vault/file"
-      consul:
-        address: "consul-helm-consul-server.persistence:8500"
-        path: "banzai-cloud-vault/"
+      # consul:
+      #   address: "consul-helm-consul-server.persistence:8500"
+      #   path: "banzai-cloud-vault/"
       #
       # etcd:
       #   address: ""
@@ -372,7 +365,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: "banzai-vault-service-account"
+  name: ""
 
 vaultConfig:
   resources: {}
