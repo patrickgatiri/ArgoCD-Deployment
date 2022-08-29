@@ -11,7 +11,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: local-consul-storage
   local:
-    path: /home/patrick/Local K8S Cluster/Storage Directory/Consul
+    path: "/home/patrick/Local K8S Cluster/Storage Directory/Consul"
   nodeAffinity:
     required:
       nodeSelectorTerms:
