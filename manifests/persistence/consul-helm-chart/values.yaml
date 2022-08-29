@@ -661,7 +661,7 @@ server:
   # desired size. For manually defined persistent volumes, this should be set to
   # the disk size of the attached volume.
   # Use the size of the local persistent volume.
-  storage: 30Gi
+  storage: 5Gi
 
   # The StorageClass to use for the servers' StatefulSet storage. It must be
   # able to be dynamically provisioned if you want the storage
@@ -673,7 +673,7 @@ server:
   # See https://www.consul.io/docs/install/performance#read-write-tuning for considerations around choosing a
   # performant storage class.
   # @type: string
-  storageClass: local-storage
+  storageClass: local-consul-storage
 
   # This will enable/disable Connect (https://consul.io/docs/connect). Setting this to true
   # _will not_ automatically secure pod communication, this
