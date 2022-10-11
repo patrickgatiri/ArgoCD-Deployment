@@ -21,5 +21,3 @@ spec:
       selfHeal: {{ .Values.selfHeal }}
     syncOptions:
       - CreateNamespace=false
-      # During redeployment of vault, override all existing resources.
-      - Replace=true
