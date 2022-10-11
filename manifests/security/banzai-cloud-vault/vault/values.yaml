@@ -272,12 +272,12 @@ vault:
     # disable_mlock: true
 
     # See https://www.vaultproject.io/docs/configuration/storage/ for storage backends
-    storage: {}
+    storage:
       # file:
       #   path: "/vault/file"
-      # consul:
-      #   address: "consul-helm-consul-server.persistence:8500"
-      #   path: "banzai-cloud-vault/"
+      consul:
+        address: "consul-helm-consul-server.persistence:8500"
+        path: "banzai-cloud-vault/"
       #
       # etcd:
       #   address: ""
